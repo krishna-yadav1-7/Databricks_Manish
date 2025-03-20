@@ -1,0 +1,48 @@
+data=[(10 ,'Anil',50000, 18),
+(11 ,'Vikas',75000,  16),
+(12 ,'Nisha',40000,  18),
+(13 ,'Nidhi',60000,  17),
+(14 ,'Priya',80000,  18),
+(15 ,'Mohit',45000,  18),
+(16 ,'Rajesh',90000, 10),
+(17 ,'Raman',55000, 16),
+(18 ,'Sam',65000,   17)]
+
+schema = ['id','Name','salary','mngr_id']
+
+manager_df = spark.createDataFrame(data=data,schema=schema)
+manager_df.show()
+
+
+
+
+
+data3=[(10 ,'Anil',50000, 18),
+(11 ,'Vikas',75000,  16),
+(12 ,'Nisha',40000,  18),
+(13 ,'Nidhi',60000,  17),
+(14 ,'Priya',80000,  18),
+(15 ,'Mohit',45000,  18),
+(16 ,'Rajesh',90000, 10),
+(17 ,'Raman',55000, 16),
+(18 ,'Sam',65000,   17),
+(18 ,'Sam',55000,   17),
+(18 ,'Sam',65000,   17)]
+
+schema3 = ['id','Name','salary','mngr_id']
+
+duplicate_manager_df = spark.createDataFrame(data=data3,schema=schema3)
+
+duplicate_manager_df.show()
+
+
+
+
+
+data1=[(19 ,'Sohan',50000, 18),
+(20 ,'Sima',75000,  17)]
+
+schema_mg = ("id","name","salary","mngr_id")
+
+manager_df1 = spark.createDataFrame(data = data1, schema = schema_mg)
+manager_df1.show()
