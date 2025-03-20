@@ -1,0 +1,15 @@
+flight_df = spark.read.format("csv")\
+                .option("header","false")\
+                .option("inferschema","false")\
+                .option("mode","FAILFAST")\
+                .load("/FileStore/tables/2010_summary-1.csv")
+
+
+
+
+df = spark.read.format("csv")\
+            .option("header","true")\
+            .option("mode","PERMISSIVE")\
+            .load("/FileStore/tables/employee_file.csv")
+
+df.show()
