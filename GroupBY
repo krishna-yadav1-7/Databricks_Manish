@@ -13,3 +13,26 @@ schema = ("id","name","salary","dept")
 
 df = spark.createDataFrame(data=data,schema=schema)
 df.show()
+
+
+
+----------------------------------------------------------------------
+
+
+
+from pyspark.sql import SparkSession
+from pyspark.sql.functions import collect_list
+
+# Initialize Spark session
+spark = SparkSession.builder.appName("GroupByExample").getOrCreate()
+
+# Create DataFrame
+input_data = [("a", "aa", 1), ("a", "aa", 2), ("b", "bb", 3), ("b", "bb", 4), ("b", "bb", 5)]
+columns = ["col1", "col2", "col3"]
+df = spark.createDataFrame(input_data, columns)
+
+# Perform groupBy and collect_list operation
+result_df = df.groupBy("col1", "col2").agg(collect_list("col3").alias("col3"))
+
+# Show result
+result_df.show(truncate=False)
